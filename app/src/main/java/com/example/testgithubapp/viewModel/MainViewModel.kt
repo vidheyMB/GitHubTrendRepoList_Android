@@ -23,4 +23,13 @@ class MainViewModel: BaseViewModel() {
         }
     }
 
+    fun searchLocal(userName: String){
+        if(userName.isNotEmpty()) {
+            val searchList = gitList.filter { it.username!!.contains(userName, true) }
+            _liveData.postValue(searchList)
+        }else{
+            _liveData.postValue(gitList)
+        }
+    }
+
 }
